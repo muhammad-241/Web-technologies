@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Portfolio - BS IT Student</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Quick Actions - Fixed and Styled */
+        .quick-actions-fixed-below-nav {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .quick-actions-fixed-below-nav a {
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .quick-actions-fixed-below-nav a:hover {
+            background: rgba(102, 126, 234, 1);
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero_sec {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .left-side-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .left-side-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .left-side-text p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
+        }
+
+        .right-side-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .right-side-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .right-side-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* About Section - New Addition */
+        .about-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 4rem 2rem;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .about-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        /* Companies Section - Enhanced */
+        .companies-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 4rem 2rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .companies-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .companies-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .companies-section em {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .corsal-sscroll-marquee-companies {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            padding: 2rem 0;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .corsal-sscroll-marquee-companies ul {
+            display: inline-block;
+            animation: scroll 25s linear infinite;
+            list-style: none;
+        }
+
+        .corsal-sscroll-marquee-companies li {
+            display: inline-block;
+            margin: 0 2rem;
+            vertical-align: middle;
+        }
+
+        .corsal-sscroll-marquee-companies a {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .corsal-sscroll-marquee-companies img {
+            height: 60px;
+            width: auto;
+            filter: grayscale(100%) opacity(0.7);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .corsal-sscroll-marquee-companies a:hover img {
+            filter: none;
+            opacity: 1;
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Projects Section - New Addition */
+        .projects-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 4rem 2rem;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .project-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Footer - Enhanced */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-content p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1rem;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero_sec {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .left-side-text h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            .companies-section h2 {
+                font-size: 2rem;
+            }
+
+            .corsal-sscroll-marquee-companies img {
+                height: 40px;
+            }
+
+            .quick-actions-fixed-below-nav {
+                right: 10px;
+                top: 70px;
+            }
+
+            .quick-actions-fixed-below-nav a {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                min-width: 70px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="quick-actions-fixed-below-nav">
+        <a href="#home">Top</a>
+        <a href="#about">About</a>
+        <a href="#partners">Partners</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="hero_sec" id="home">
+        <div class="left-side-text">
+            <h1>Dive Deeper Into The Future</h1>
+            <p>Exploring the amazing and futuristic era of Computer Science and Artificial Intelligence. Join me on this journey of innovation and technological advancement as we build tomorrow's solutions today.</p>
+            <a href="#projects" class="cta-button">Explore Projects</a>
+        </div>
+        <div class="right-side-image">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.gLLeiAxlddD1-R5f2N611QHaD2?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                alt="Future Technology Hero Image">
+        </div>
+    </div>
+
+    <section class="about-section" id="about">
+        <h2>About My Journey</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <h3>🎓 Education</h3>
+                <p>Currently pursuing BS in Information Technology, focusing on cutting-edge technologies and innovative solutions for modern challenges.</p>
+            </div>
+            <div class="about-card">
+                <h3>💻 Skills</h3>
+                <p>Web Development, AI/ML, Database Management, Software Engineering, and emerging technologies in computer science.</p>
+            </div>
+            <div class="about-card">
+                <h3>🚀 Vision</h3>
+                <p>Building the future through technology, creating solutions that matter, and contributing to the digital transformation of our world.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>AI-Powered Web Applications</h3>
+                <p>Developing intelligent web solutions that leverage machine learning to provide personalized user experiences and automated decision-making capabilities.</p>
+            </div>
+            <div class="project-card">
+                <h3>Modern Website Development</h3>
+                <p>Creating responsive, fast-loading websites with cutting-edge design principles and optimal user experience across all devices and platforms.</p>
+            </div>
+            <div class="project-card">
+                <h3>Technology Research</h3>
+                <p>Conducting research on emerging technologies, AI trends, and their practical applications in solving real-world problems and business challenges.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="companies-section" id="partners">
+        <h2>Trusted Partners & Inspirations</h2>
+        <p>Collaborating with and learning from industry leaders in technology and innovation</p>
+        <p><em>Click on the logo and visit the websites of respected Partners</em></p>
+        
+        <div class="corsal-sscroll-marquee-companies">
+            <ul>
+                <li><a href="https://www.chatgpt.com" target="_blank"><img src="https://www.nesabamedia.com/wp-content/uploads/2023/03/Logo-12.png" alt="OpenAI"></a></li>
+                <li><a href="https://gemini.google.com/" target="_blank"><img src="https://www.revistanerd.com.br/wp-content/uploads/2023/12/Google-Gemini-scaled.jpg" alt="Google Gemini"></a></li>
+                <li><a href="https://suparco.gov.pk/" target="_blank"><img src="https://tse3.mm.bing.net/th/id/OIP.F3iV1VjhD01UrSd82hfOwAHaDH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="SUPARCO"></a></li>
+                <li><a href="https://nastp.gov.pk/" target="_blank"><img src="https://tse1.mm.bing.net/th/id/OIP.8RRALySpVBoZCIbvcG-jjgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="NASTP"></a></li>
+                <li><a href="https://www.ibm.com" target="_blank"><img src="https://tse2.mm.bing.net/th/id/OIP.Bs2PlI-wmfFiYzgWNRO0pgHaDO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="IBM"></a></li>
+                <li><a href="https://claude.ai/" target="_blank"><img src="https://tse3.mm.bing.net/th/id/OIP.3JLWgmtpIUA2Ep4fFHyQFgHaEw?r=0&w=1400&h=900&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Claude"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Let's Connect</h3>
+            <p>BS IT Student passionate about technology, AI, and web development. Always eager to learn, collaborate on innovative projects, and contribute to the future of technology.</p>
+            
+            <div class="social-links">
+                <a href="#linkedin">LinkedIn</a>
+                <a href="#github">GitHub</a>
+                <a href="#email">Email</a>
+                <a href="#portfolio">Portfolio</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 BS IT Portfolio. Built with passion for technology and innovation.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
